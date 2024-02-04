@@ -61,7 +61,7 @@ This project is currently in development and is expected to undergo further enha
 ## Sources
 
 - JSONPowerDB Documentation: [Link](https://login2explore.com/jpdb/docs.html#jpdb-command-request)
-- GitHub Repository: [Link](https://github.com/your-username/jsonpowerdb-form-management)
+- GitHub Repository: [Link](https://github.com/geekieujjwal/L2X-Assignment)
 
 ## Other Information
 

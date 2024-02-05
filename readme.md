@@ -38,25 +38,59 @@ This project aims to create a simple form management system using JSONPowerDB as
 
 ```javascript
 // Example code for saving form data to JSONPowerDB
+function saveFormDataToJSONPowerDB(formData) {
+  return new Promise((resolve, reject) => {
+    // Convert form data to JSON string
+    const jsonData = JSON.stringify(formData);
+
+    // Create a PUT request to save form data
+    const putRequest = createPUTRequest(
+      connToken,
+      jsonData,
+      empDBName,
+      empRelationName
+    );
+
+    // Make a synchronous AJAX call to execute the PUT request
+    jQuery.ajaxSetup({ async: false });
+    const response = executeCommandAtGivenBaseUrl(
+      putRequest,
+      jpdbBaseURL,
+      jpdbIML
+    );
+    jQuery.ajaxSetup({ async: true });
+
+    // Check the response status and resolve or reject the promise accordingly
+    if (response.status === 200) {
+      resolve("Form data saved successfully");
+    } else {
+      reject("Error saving form data");
+    }
+  });
+}
+
+// Example usage:
 const formData = {
   name: "John Doe",
-  email: "john@example.com",
-  message: "This is a test message.",
+  studentClass: "10",
+  birthDate: "2005-05-20",
+  address: "123 Main Street",
+  enrollmentDate: "2023-09-01",
 };
 
 // Save form data to JSONPowerDB
 saveFormDataToJSONPowerDB(formData)
   .then((response) => {
-    console.log("Form data saved successfully:", response);
+    console.log(response);
   })
   .catch((error) => {
-    console.error("Error saving form data:", error);
+    console.error(error);
   });
 ```
 
 ## Project Status
 
-This project is currently in development and is expected to undergo further enhancements and improvements.
+This project is now completed, with all the functionalities implemented and tested. Further enhancements and improvements may be considered in the future, but the core features are finalized.
 
 ## Sources
 
